@@ -1,5 +1,7 @@
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -16,18 +18,25 @@ public class WordScrambleEx1 {
    } // main
 
    public static String getAnswer(String[] strArr) { 
-	   Random i = new Random();
-	   int index = i.nextInt(strArr.length);
-	   System.out.println(strArr[index]);
-	   return null;
+	   Random r = new Random();
+	   String answer = strArr[r.nextInt(strArr.length-1)+1];
+	   return answer;
 	   
-	   
+//	   int rnd = new Random().nextInt(strArr.length);
+//	   return strArr[rnd];
    }
    public static String getScrambledWord(String str) {
-	   
-	   return str; 
-//	   List<String> letters = Array.asList(String.split(""));
-//	   Collection.shuffle
+	 char[] chArr = str.toCharArray();
+	 
+	 for(int i = 0; i < str.length(); i++) {
+		 int idx = (int)(Math.random()*str.length());
+		 
+		 char tmp = chArr[i];
+		 
+		 chArr[i] = chArr[idx];
+		 chArr[idx] = tmp;
+	 }
+	 	return new String(chArr);
 
    } // scramble(String str)
 }
