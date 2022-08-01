@@ -18,27 +18,30 @@ public class WordScrambleEx1 {
              String str = sc.nextLine();
 //             System.out.println(str);
              
-             if(str.equals("q") || str.equals("Q"))
+             if(str.equals("q") || str.equals("Q")) {
+            	 System.out.println("--------Á¾·á--------");
             	 break;
+             }
              
-             if(question.equals(str)) {
-            	 System.out.println("ì •ë‹µì…ë‹ˆë‹¤");
-            	 break;
+             if(answer.equals(str)) {
+            	 System.out.println("Á¤´äÀÔ´Ï´Ù");
+            	 answer = getAnswer(strArr);
+                 question = getScrambledWord(answer);
              } else {
-            	 System.out.println(str + "ì€/ëŠ” ì •ë‹µì´ì•„ë‹™ë‹ˆë‹¤. ë‹¤ì‹œ ì‹œë„í•´ë³´ì„¸ìš”.");
+            	 System.out.println(str + "Àº/´Â Á¤´äÀÌ¾Æ´Õ´Ï´Ù. ´Ù½Ã ½ÃµµÇØº¸¼¼¿ä.");
              }
 
-             // 1. í™”ë©´ì„ í†µí•´ ì‚¬ìš©ìì˜ ì…ë ¥ì„ ë°›ëŠ”ë‹¤.(Scannerí´ë˜ìŠ¤ ì‚¬ìš©)
-             // 2. ì‚¬ìš©ìê°€ q ë˜ëŠ” Që¥¼ ì…ë ¥í•˜ë©´ í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•œë‹¤.
-             // 3. ì‚¬ìš©ìê°€ ì •ë‹µì„ ë§ì¶œë•Œê¹Œì§€ ë°˜ë³µí•˜ë‹¤ê°€
-             //     ì‚¬ìš©ìê°€ ì •ë‹µì„ ë§ì¶”ë©´, whileë¬¸ì„ ë¹ ì ¸ë‚˜ê°„ë‹¤.
+             // 1. È­¸éÀ» ÅëÇØ »ç¿ëÀÚÀÇ ÀÔ·ÂÀ» ¹Ş´Â´Ù.(ScannerÅ¬·¡½º »ç¿ë)
+             // 2. »ç¿ëÀÚ°¡ q ¶Ç´Â Q¸¦ ÀÔ·ÂÇÏ¸é ÇÁ·Î±×·¥À» Á¾·áÇÑ´Ù.
+             // 3. »ç¿ëÀÚ°¡ Á¤´äÀ» ¸ÂÃâ¶§±îÁö ¹İº¹ÇÏ´Ù°¡
+             //     »ç¿ëÀÚ°¡ Á¤´äÀ» ¸ÂÃß¸é, while¹®À» ºüÁ®³ª°£´Ù.
              //
              //Question :HEOP
 //             Your answer is :phoe
-//             phoeì€/ëŠ” ì •ë‹µì´ ì•„ë‹™ë‹ˆë‹¤. ë‹¤ì‹œ ì‹œë„í•´ë³´ì„¸ìš”.
+//             phoeÀº/´Â Á¤´äÀÌ ¾Æ´Õ´Ï´Ù. ´Ù½Ã ½ÃµµÇØº¸¼¼¿ä.
 //             Question :HEOP
 //             Your answer is :hope
-//             ì •ë‹µì…ë‹ˆë‹¤.
+//             Á¤´äÀÔ´Ï´Ù.
        } // while
 
  } // main
