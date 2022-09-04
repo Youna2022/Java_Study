@@ -1,0 +1,81 @@
+//어려웠던 코드_0905
+
+package Study02;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+
+public class ReportedID {
+
+//	["muzi", "frodo", "apeach", "neo"]	["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]	2	[2,1,1,0]
+//			["con", "ryan"]	["ryan con", "ryan con", "ryan con", "ryan con"]	3	[0,0]
+	
+    //<key, value>
+    //<Sting, HashSet>
+    //<muzi, apeach> 
+    //<frodo, apeach muzi
+    //(muzi, 0)  (frodo,1)
+    //answer[] = {2, 1 ,0 ,0}
+    public static int[] solution(String[] id_list, String[] report, int k) {
+        int[] answer = new int[id_list.length]; // [0,0,0,0]
+//        muzi -> 0 / apeach->2 / frodo->1 / muzi->0
+        HashMap<String, Integer> idToNum = new HashMap<>();
+        HashMap<String, HashSet<String>> map = new HashMap<>();
+        
+        //
+        for(int i = 0; i < id_list.length; i++) {
+        	idToNum.put(id_list[i], i); //(muzi, 0)  (frodo,1)...
+        	map.put(id_list[i], new HashSet<>()); // (muzi,HashSet<>), (frodo,HashSet<>)
+        }
+//        map ==>
+//		  key       value        
+//        muzi   , HashSet
+//        frodo  , HashSet 
+//        apeach, HashSet
+//        neo    , HashSet
+        
+        for(String r : report) {		//   0     1        0       1
+        	String[]str = r.split(" "); //(muzi, frodo), (apeach, fordo)
+        	map.get(str[1]).add(str[0]); // Hashset (frodo, muzi), (frodo, apeach)
+//        	get : str[1] -> key  key에 해당하는 Value를 가져와서 /add : HashSet 값을 넣는다.
+//		  key       value        
+//        muzi   , HashSet
+//        frodo  , [muzi, apeach] 
+        } 
+        
+        
+//      map ==>
+//		  key       value         set   
+//      muzi   , [apeach]      	  value값(문자)  map.get("muzi") ==> [apech] : HashSet
+//      frodo  , [muzi, apeach] 
+//      apeach, HashSet
+//      neo    , [frodo, muzi]
+        
+        for(int i =0; i < id_list.length; i++) {
+        	HashSet<String> set = map.get(id_list[i]);
+        	if(set.size() >= k) {
+        		for(String userId : set) {
+        			//idToNum
+        			//<muzi  , 0>
+        			//<frodo , 1>
+        			//<apeach, 2>
+        			//<neo   , 3>		muzi -> 0 == answer[0]++/ apeach->2 = answer[2]++
+        			//                  frodo->1  == answer[1]++/ muzi->0   = answer[0]++
+        			answer[idToNum.get(userId)]++;
+        		}
+        	}
+        }
+        return answer;
+        
+    }
+	
+	public static void main(String[] args) {
+		String[] id = {"muzi", "frodo", "apeach", "neo"};
+		String[] rp = {"muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"};
+		System.out.println(Arrays.toString(solution(id,rp, 2)));
+	
+		
+	}
+
+}
