@@ -30,12 +30,10 @@ public class FindPrimeNumPro42839 {
         	
         }
         
-        
-        
-        
-        
         return answer;
     }
+	
+	
 	
 	public static void main(String[] args) {
 		String numbers = "17";
