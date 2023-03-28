@@ -37,8 +37,10 @@ public class FindPrimeNum1978 {
 		
 	}
 	
-	//에라토스테네스의 체 _  false는 소수 / true는 소수가 아님. // prime배열에서 소수가 아닌것을 true로 바
+	
+	//에라토스테네스의 체 _  false는 소수 / true는 소수가 아님. // prime배열에서 소수가 아닌것을 true로 바꿈 
 	// 예) 2(소수) - false / 4(2*2), 6(4+2), 8(6+2).. 제외(true) // 3(소수) - false / 9(3*3), 12(9+3), 15(12+3) 제외 
+	
 	private static void pNum() {
 		prime [0] = true;
 		prime [1] = true;
